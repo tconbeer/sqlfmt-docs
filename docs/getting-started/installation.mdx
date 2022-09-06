@@ -1,0 +1,91 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Installation
+
+sqlfmt is a command-line tool that is built in Python and runs on MacOS, Linux, and Windows.
+If you have Python installed and are familiar with installing packages, installation is as
+easy as:
+
+```bash
+pip install shandy-sqlfmt[jinjafmt]
+```
+
+For more info and tips, read on.
+
+:::tip Try It First
+Want to test out sqlfmt on a query before you install it? Go to [**sqlfmt.com**](https://sqlfmt.com) to use the interactive, web-based version.
+:::
+
+## Prerequisites
+You will need Python 3.7-3.10 installed. You should use `pipx` or install into a virtual environment (maybe as a dev-dependency in your project). If you do not know how to install Python and use `pipx` and/or virtual environments, go read about that first.
+
+## Install Using pipx (recommended)
+
+We recommend installing sqlfmt with the [jinjafmt extra](./formatting-jinja.md) (which will also install the Python code formatter, _Black_):
+
+```bash
+pipx install shandy-sqlfmt[jinjafmt]
+```
+
+But if you would prefer that we leave your jinja alone (or you'd like a lighter-weight install), you can install without the extra:
+```bash
+pipx install shandy-sqlfmt
+```
+
+
+## Other Installation Options
+
+You should use a virtual environment to isolate sqlfmt's dependencies from others on your system. As part of a larger Python project (like a dbt project), you should probably use a package manager like Poetry or pipenv.
+
+<Tabs>
+<TabItem value="poetry" label="Poetry" default>
+
+With the [jinjafmt extra](./formatting-jinja.md) (recommended):
+
+```bash
+poetry add -D shandy-sqlfmt[jinjafmt]
+```
+
+Without the jinjafmt extra:
+
+```bash
+poetry add -D shandy-sqlfmt
+```
+
+</TabItem>
+<TabItem value="pipenv" label="pipenv" default>
+
+With the [jinjafmt extra](./formatting-jinja.md) (recommended):
+
+```bash
+pipenv install -d shandy-sqlfmt[jinjafmt]
+```
+
+Without the jinjafmt extra:
+
+```bash
+pipenv install -d shandy-sqlfmt
+```
+
+</TabItem>
+<TabItem value="pip" label="pip" default>
+
+With the [jinjafmt extra](./formatting-jinja.md) (recommended):
+
+```bash
+pip install shandy-sqlfmt[jinjafmt]
+```
+
+Without the jinjafmt extra:
+
+```bash
+pip install shandy-sqlfmt
+```
+
+</TabItem>
+</Tabs>
