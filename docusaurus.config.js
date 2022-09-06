@@ -77,19 +77,19 @@ const config = {
             items: [
               {
                 label: 'Installation',
-                to: '/docs/getting-started/installation',
+                to: '/getting-started/installation',
               },
               {
                 label: 'Configuration',
-                to: '/docs/getting-started/configuring-sqlfmt',
+                to: '/getting-started/configuring-sqlfmt',
               },
               {
                 label: 'dbt',
-                to: '/docs/integrations/dbt',
+                to: '/integrations/dbt',
               },
               {
                 label: 'Style Guide',
-                to: '/docs/style',
+                to: '/style',
               },
             ],
           },
