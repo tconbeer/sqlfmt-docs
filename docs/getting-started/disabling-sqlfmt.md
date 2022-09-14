@@ -36,5 +36,5 @@ exclude=["target/**/*", "dbt_packages/**/*"]
 ```
 
 :::tip
-strings literals in TOML files must be quoted
+string literals in TOML files must be quoted
 :::
