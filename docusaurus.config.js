@@ -27,6 +27,8 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: ["posthog-docusaurus"],
+
   presets: [
     [
       'classic',
@@ -138,6 +140,10 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      posthog: {
+        apiKey: "phc_JvcbkJ52TJpVaMxGHRGOxYrcOuTKU05949sLeVp8r7g",
+        enableInDevelopment: true
+      }
     }),
 };
 
