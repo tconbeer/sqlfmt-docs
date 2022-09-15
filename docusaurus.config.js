@@ -101,10 +101,6 @@ const config = {
             title: 'sqlfmt Resources',
             items: [
               {
-                label: 'Web Formatter',
-                href: 'https://sqlfmt.com/',
-              },
-              {
                 label: 'PyPI',
                 href: 'https://pypi.org/project/shandy-sqlfmt/',
               },
