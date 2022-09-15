@@ -53,10 +53,12 @@ const config = {
     ({
       navbar: {
         title: 'sqlfmt',
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        logo: {
+          href: "https://sqlfmt.com",
+          target: "_self",
+          alt: 'sqlfmt Logo',
+          src: 'img/logo.png',
+        },
         items: [
           {
             type: 'doc',
@@ -98,10 +100,6 @@ const config = {
           {
             title: 'sqlfmt Resources',
             items: [
-              {
-                label: 'Web Formatter',
-                href: 'https://sqlfmt.com/',
-              },
               {
                 label: 'PyPI',
                 href: 'https://pypi.org/project/shandy-sqlfmt/',
