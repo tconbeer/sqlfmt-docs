@@ -53,10 +53,12 @@ const config = {
     ({
       navbar: {
         title: 'sqlfmt',
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        logo: {
+          href: "https://sqlfmt.com",
+          target: "_self",
+          alt: 'sqlfmt Logo',
+          src: 'img/logo.png',
+        },
         items: [
           {
             type: 'doc',
