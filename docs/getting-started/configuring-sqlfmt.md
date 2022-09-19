@@ -46,6 +46,33 @@ check = true
 String literals in TOML files must be quoted!
 :::
 
+## Configuration Precedence
+
+If conflicting config is given to sqlfmt, config will be resolved in the following order:
+
+1. An explicit option passed at invocation (e.g., `--line-length 99`)
+2. A set environment variable (e.g., `LINE_LENGTH=90`)
+3. A value from the `pyproject.toml` file (e.g., `line_length=85`)
+4. The default behavior (e.g., 88 characters)
+
+### No-color and Force-color
+
+sqlfmt output is colorized by default, by adding ANSI color codes to the terminal output.
+
+sqlfmt supports the standard from [no-color.org](https://no-color.org), and will not 
+colorize output if the `NO_COLOR` environment variable is set. We achieve this by
+implementing a "no-color" option, which can also be set via the sqlfmt-specific environment
+variable, `SQLFMT_NO_COLOR`, the CLI option `--no-color`, or by setting `no_color=true`
+in the `pyproject.toml` file.
+
+If you have `NO_COLOR` set (for other programs) and want sqlfmt to colorize output, you can
+use the force-color option, via `--force-color`, `SQLFMT_FORCE_COLOR`, or `force_color=true`
+in your `pyproject.toml` file.
+
+If the force-color option is set, sqlfmt will colorize output, no matter how no-color and 
+force-color are set. For example, if `force_color=true` is set in the config file, but
+sqlfmt is run with the `--no-color` option, it **will** colorize output. 
+
 ## Configuration Reference
 
 | CLI Option                               | Environment Variable                 | Config File                     | Description                                                                                                                                                                                                                                                                       |
