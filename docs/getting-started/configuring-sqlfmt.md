@@ -18,7 +18,7 @@ sqlfmt -l 99 .
 
 ## Configuring Operations
 
-sqlfmt's operation, however, is highly configurable using options at the command line. For a full list of options, see below, or type: 
+sqlfmt's operation, however, is highly configurable using options at the command line. For a full list of options, see [below](#configuration-reference), or type: 
 
 ```bash
 sqlfmt --help
