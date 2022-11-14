@@ -10,6 +10,9 @@ This website is built using [Docusaurus 2](https://docusaurus.io/).
 $ yarn
 ```
 
+You may also need to install [Git LFS](https://git-lfs.github.com/), which we use to track static assets in the repo.
+
+
 ### Local Development
 
 ```
