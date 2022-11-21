@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # pre-commit
 
 You can configure [pre-commit](https://pre-commit.com/) to run sqlfmt on your repository before you commit changes.
