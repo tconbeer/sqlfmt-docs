@@ -11,7 +11,7 @@ After installing sqlfmt and the extension:
 
     Alternatively, add the following to your VS Code `settings.json`:
 
-    ```json
+    ```JSON title=settings.json
     "files.associations": {
         "*.sql": "jinja-sql"
     },
@@ -19,7 +19,7 @@ After installing sqlfmt and the extension:
 
 1. Select "dbt Power User" (extension `id:innoverio.vscode-dbt-power-user`) as the default formatter. You can do this either by using the context menu (right click on an open dbt model in the editor) and select "Format Document With...", or you can add the following to your VS Code settings:
 
-    ```json
+    ```JSON title=settings.json
     "[jinja-sql]": {
         "editor.defaultFormatter": "innoverio.vscode-dbt-power-user"
     }
@@ -27,7 +27,7 @@ After installing sqlfmt and the extension:
 
 2. You can enable format on save by adding another line to your VS Code settings:
 
-    ```json
+    ```JSON title=settings.json
     "[jinja-sql]": {
         "editor.defaultFormatter": "innoverio.vscode-dbt-power-user",
         "editor.formatOnSave": true

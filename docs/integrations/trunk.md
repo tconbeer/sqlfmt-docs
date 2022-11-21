@@ -25,8 +25,8 @@ but also allow you to use Trunk to format-on-save SQL files with sqlfmt:
 
 ```json title=.vscode/settings.json
 {
-  "editor.formatOnSave": true,
   "editor.defaultFormatter": "trunk.io"
+  "editor.formatOnSave": true,
 }
 ```
 

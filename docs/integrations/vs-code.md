@@ -1,6 +1,10 @@
 # VS Code
 
-You can use the [Run on Save](https://marketplace.visualstudio.com/items?itemName=emeraldwalk.RunOnSave) extension with sqlfmt to automatically format files when they are saved. After installing the extension:
+There are several ways to integrate sqlfmt with VS Code. All require installation of an Extension from the VS Code Marketplace.
+
+If you already use [dbt Power User](./dbt-power-user.md) or [Trunk](./trunk.md), their extensions can configure sqlfmt as the default formatter and enable a run-on-save hook.
+
+Otherwise, you can use the [Run on Save](https://marketplace.visualstudio.com/items?itemName=emeraldwalk.RunOnSave) extension with sqlfmt to automatically format files when they are saved. After installing the extension:
 
 1. On the extension's page, click the gear icon to access the extension settings.
 2. Choose if you would like to create either a User or Workspace setting, and select the appropriate tab. 
