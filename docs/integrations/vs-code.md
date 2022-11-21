@@ -24,6 +24,21 @@ Otherwise, you can use the [Run on Save](https://marketplace.visualstudio.com/it
 }
 ```
 
-:::tip Configuring sqlfmt with Run on Save
-You can either use a `pyproject.toml` file in your project directory or add other options to the `cmd` key in the settings above if you would like to change the default behavior of sqlfmt
-:::
+## Configuring sqlfmt with VS Code Extensions
+If you use the Run on Save extension, you can add other options to the `cmd` key in the settings above if you would like to change the default behavior of sqlfmt. For example, to use a line length of 100:
+
+```JSON title=settings.json
+{
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": ".*\\.sql(\\.jinja)?",
+                "isAsync": true,
+                "cmd": "sqlfmt -l 100 ${file}"
+            }
+        ]
+    }
+}
+```
+
+If you are using any extension, you can add a [`pyproject.toml` configuration file](../getting-started/configuring-sqlfmt.md#using-a-pyprojecttoml-file) to your project directory, and sqlfmt will find and apply that configuration automatically, even when run by the extension.
