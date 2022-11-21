@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 # Trunk
 
 Use Trunk to integrate sqlfmt into VSCode, GitHub Actions: it's a powerful DevEx toolkit that integrates with every stage of your workflow.

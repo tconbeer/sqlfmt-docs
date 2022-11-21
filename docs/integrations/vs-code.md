@@ -1,7 +1,3 @@
----
-sidebar_position: 4
----
-
 # VS Code
 
 You can use the [Run on Save](https://marketplace.visualstudio.com/items?itemName=emeraldwalk.RunOnSave) extension with sqlfmt to automatically format files when they are saved. After installing the extension:
