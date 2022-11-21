@@ -1,16 +1,15 @@
 # Trunk
 
-Use Trunk to integrate sqlfmt into VSCode, GitHub Actions: it's a powerful DevEx toolkit that integrates with every stage of your workflow.
+You can use [Trunk](https://trunk.io/) to integrate sqlfmt into VSCode, GitHub Actions, and your local development workflow.
+
+
+## Installation
 
 ```bash
 curl https://get.trunk.io -fsSL | bash
 trunk init
 trunk check enable sqlfmt
 ```
-
-:::info
-Trunk supports sqlfmt, sqlfluff, and another 50+ linters across over 20+ other languages. 
-:::
 
 :::tip
 Consider also [tracking the Trunk launcher in your repo](https://docs.trunk.io/docs/install#add-the--directly-into-your-repo-optional).
@@ -61,4 +60,4 @@ jobs:
 
 ## Learn more
 
-Trunk is capable of a lot more, such as making it easy to [write custom git hook integrations](https://docs.trunk.io/docs/actions-git-hooks). Check out their [documentation](https://docs.trunk.io) to learn more.
+More information can be found in Trunk's [documentation](https://docs.trunk.io/docs/check).
