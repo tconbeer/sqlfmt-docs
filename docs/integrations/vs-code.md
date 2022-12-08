@@ -1,5 +1,9 @@
 # VS Code
 
+:::info
+sqlfmt must be installed globally to integrate with VS Code
+:::
+
 There are several ways to integrate sqlfmt with VS Code. All require installation of an Extension from the VS Code Marketplace.
 
 If you already use [dbt Power User](./dbt-power-user.md) or [Trunk](./trunk.md), their extensions can configure sqlfmt as the default formatter and enable a run-on-save hook.
