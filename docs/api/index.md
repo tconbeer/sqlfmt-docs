@@ -8,15 +8,18 @@ The public API is defined in the `sqlfmt.api` module. Any breaking changes to th
 
 All of the other API functions expect a `Mode` as an argument. A `Mode` with
 the default configuration can be instantiated with no arguments
-(e.g., `mode = Mode()`). For more information on each option, see `sqlfmt --help`
-(or the source in the `sqlfmt.cli` module).
+(e.g., `mode = Mode()`).
+
+For more information on each option, see 
+[Configuring sqlfmt](../getting-started/configuring-sqlfmt.md), `sqlfmt --help`,
+or the source in the `sqlfmt.cli` module.
 
 ```py
 @dataclass
 class Mode:
     """
     A Mode is a container for all sqlfmt config, including formatting config and
-    report config
+    report config.
     """
 
     SQL_EXTENSIONS: List[str] = field(default_factory=lambda: [".sql", ".sql.jinja"])
@@ -25,6 +28,7 @@ class Mode:
     check: bool = False
     diff: bool = False
     exclude: List[str] = field(default_factory=list)
+    fast: bool = False
     single_process: bool = False
     no_jinjafmt: bool = False
     reset_cache: bool = False

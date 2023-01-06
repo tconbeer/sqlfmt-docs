@@ -9,7 +9,7 @@ sidebar_position: 1
 It is **highly recommended** to only run sqlfmt on files in a version control system (like git), so that it is easy for you to revert any changes made by sqlfmt. On your first run, be sure to make a commit before running sqlfmt.
 :::
 
-sqlfmt is a command-line tool. It works on any posix terminal and on Windows Powershell. If you have used the Python code formatter _Black_, the sqlfmt commands will look familiar. 
+sqlfmt is a command-line tool. It works on any posix terminal and on Windows Powershell. If you have used the Python code formatter *Black*, the sqlfmt commands will look familiar. 
 
 :::tip
 The code snippets below are commands that can be typed into your terminal, after installing sqlfmt.
