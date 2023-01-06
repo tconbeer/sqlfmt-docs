@@ -4,7 +4,11 @@
 
 The Extension has many features, including a sqlfmt-powered formatter.
 
-After installing sqlfmt and the extension:
+:::tip
+sqlfmt must be available on the PATH in order to be accessed by dbt Power User. Install sqlfmt with `pipx` to isolate its dependencies and add it to the PATH.
+:::
+
+After installing sqlfmt and the dbt Power User extension:
 
 1. Associate your .sql files with the jinja-sql language. Select Preferences > Settings, and under Files: Associations click Add Item:
     ![Screenshot of VS Code Settings menu, with Add Items button highlighted](./assets/dbt-power-user-jinja-sql-language.png)
