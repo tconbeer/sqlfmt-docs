@@ -1,6 +1,10 @@
 ---
 sidebar_position: 1
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Using sqlfmt
 
 :::danger Before You Begin
@@ -8,6 +12,9 @@ sidebar_position: 1
 
 It is **highly recommended** to only run sqlfmt on files in a version control system (like git), so that it is easy for you to revert any changes made by sqlfmt. On your first run, be sure to make a commit before running sqlfmt.
 :::
+
+<Tabs>
+<TabItem value="python" label="Python" default>
 
 sqlfmt is a command-line tool. It works on any posix terminal and on Windows Powershell. If you have used the Python code formatter *Black*, the sqlfmt commands will look familiar. 
 
@@ -43,3 +50,57 @@ sqlfmt can also format code passed through standard input (`stdin`) by passing `
 ```bash
 echo "select 1" | sqlfmt -
 ```
+</TabItem>
+<TabItem value="docker" label="Docker">
+
+sqlfmt is also available as a Dockerized container. This allows for formatting without having Python installed. 
+
+To format the files in the current directory and it's subdirectory:
+
+```bash
+docker run \
+    -v $(pwd):/src \
+    ghcr.io/tconbeer/sqlfmt:latest
+```
+
+In this example `$(pwd)` will return the current working directory. All files in this directory will be mounted to the `/src` folder in the container, which by default will be formatted when the container is run.
+
+To format specific files multiple mounts can be passed to the container.
+
+```bash
+docker run 
+    -v {path to file one}:/src/file_one 
+    -v {path to file two}:/src/file_two
+    ghcr.io/tconbeer/sqlfmt:latest
+```
+
+Or alternatively this can be achieved by passing multiple filenames to `sqlfmt` in the container:
+
+```bash
+docker run \
+    -v $(pwd):/src \
+    ghcr.io/tconbeer/sqlfmt:latest \
+    sqlfmt ./file_one ./file_two
+```
+
+In the same fashion the `check` and `diff` functionality of `sqlfmt` can be used:
+
+```bash
+docker run \
+    -v $(pwd):/src \
+    ghcr.io/tconbeer/sqlfmt:latest \
+    sqlfmt . --check
+```
+
+Configurations can be passed along in all the ways described in [configuring sqlfmt](./configuring-sqlfmt.md). The only difference is that environmental configuration can be passed as such:
+
+```bash
+docker run \
+    -v $(pwd):/src \
+    -e SQLFMT_LINE_LENGTH=100 \
+    ghcr.io/tconbeer/sqlfmt:latest
+```
+
+
+</TabItem>
+</Tabs>
