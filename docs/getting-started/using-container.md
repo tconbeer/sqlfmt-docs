@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Using sqlfmt with Docker
+# Using sqlfmt in a Container
 
 We build official container images with every release of sqlfmt (since v0.15.0) and push it to [GHCR](https://github.com/tconbeer/sqlfmt/pkgs/container/sqlfmt) (the GitHub Container Registry). With Docker installed, you can run sqlfmt to format all files in your current working directory with:
 
