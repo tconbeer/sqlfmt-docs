@@ -7,7 +7,7 @@ Add the following config to your `.pre-commit-config.yaml` file:
 ```yml title=.pre-commit-config.yaml
 repos:
   - repo: https://github.com/tconbeer/sqlfmt
-    rev: v0.13.0
+    rev: v0.16.0
     hooks:
       - id: sqlfmt
         language_version: python
