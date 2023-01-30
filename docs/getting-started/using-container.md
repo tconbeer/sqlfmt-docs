@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Using sqlfmt in a Container
 
-We build official container images with every release of sqlfmt (since v0.15.0) and push it to [GHCR](https://github.com/tconbeer/sqlfmt/pkgs/container/sqlfmt) (the GitHub Container Registry). With Docker installed, you can run sqlfmt to format all files in your current working directory with:
+We build official container images with every release of sqlfmt (since v0.15.0) and push them to [GHCR](https://github.com/tconbeer/sqlfmt/pkgs/container/sqlfmt) (the GitHub Container Registry). With [Docker](https://docs.docker.com/get-docker/) installed, you can run sqlfmt to format all files in your current working directory with:
 
 ```bash
 docker run -v $(pwd):/src ghcr.io/tconbeer/sqlfmt:latest
@@ -12,7 +12,9 @@ docker run -v $(pwd):/src ghcr.io/tconbeer/sqlfmt:latest
 
 ## About the Container File Structure and Default Commands
 
-To format files on the host, you need to configure the container by mapping a volume on the host to a directory inside the container. In the command above, we included `-v $(pwd):/src` to map the current working directory to the `/src` directory in the container. The container is configured to use `/src` as its working directory, so to format files in the volume, you can run `sqlfmt .` inside the container. You can also provide more specific paths (relative to the root of the volume that you provided). For example, if your current working directory includes a subdirectory called `./models`, you can format only that subdirectory with:
+To format files on the host, you need to configure the container by mapping a volume on the host to a directory inside the container. In the command above, we included `-v $(pwd):/src` to map the current working directory to the `/src` directory in the container.
+
+The container is configured to use `/src` as its working directory, so to format files in the volume, you can run `sqlfmt .` inside the container. You can also provide more specific paths (relative to the root of the volume that you provided). For example, if your current working directory includes a subdirectory called `./models`, you can format only that subdirectory with:
 
 ```bash
 docker run -v $(pwd):/src ghcr.io/tconbeer/sqlfmt:latest sqlfmt ./models
