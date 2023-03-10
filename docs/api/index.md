@@ -1,5 +1,8 @@
 # API Reference
 
+sqlfmt can be imported as a Python library and defines a
+[mostly-stable](/versioning/) public API.
+
 The public API is defined in the `sqlfmt.api` module. Any breaking changes to the public API will be limited to new minor versions (`0.x.0`) and documented in the [CHANGELOG](https://github.com/tconbeer/sqlfmt/tree/main/CHANGELOG.md).
 
 ## `api.Mode`
@@ -28,6 +31,7 @@ class Mode:
     check: bool = False
     diff: bool = False
     exclude: List[str] = field(default_factory=list)
+    encoding: str = 'utf-8'
     fast: bool = False
     single_process: bool = False
     no_jinjafmt: bool = False
@@ -54,8 +58,7 @@ def format_string(source_string: str, mode: Mode) -> str:
 
 Example:
 ```py
-from sqlfmt.api import format_string
-from sqfmt.mode import Mode
+from sqlfmt.api import Mode, format_string
 from sqlfmt.exception import SqlfmtError
 
 mode = Mode()
@@ -97,8 +100,7 @@ Example:
 ```py
 from pathlib import Path
 
-from sqlfmt.api import run
-from sqlfmt.mode import Mode
+from sqlfmt.api import Mode, run
 
 mode = Mode()
 
@@ -131,8 +133,7 @@ Example:
 ```py
 from Pathlib import Path
 
-from sqlfmt.api import run, get_matching_paths
-from sqlfmt.mode import Mode
+from sqlfmt.api import Mode, run, get_matching_paths
 
 mode = Mode(exclude=["./do_not_format/**/*.sql"])
 
@@ -157,8 +158,9 @@ def initialize_progress_bar(
     total: int, mode: Mode, force_progress_bar: bool = False
 ) -> Tuple[tqdm, Callable[[Awaitable[SqlFormatResult]], None]]:
     """
-    Return a callable that can be used with api.run to display a progress bar
-    that updates after each file is formatted.
+    Return a Tuple consisting of the progress bar object and a
+    callable that can be used with api.run to update the progress bar
+    after each file is formatted.
 
     Pass force_progress_bar to enable the progress bar, even on non-TTY
     terminals (this is handy for testing the progress bar).
@@ -170,8 +172,7 @@ Example:
 ```py
 from pathlib import Path
 
-from sqlfmt.api import run, initialize_progress_bar
-from sqlfmt.mode import Mode
+from sqlfmt.api import Mode, run, initialize_progress_bar
 
 mode = Mode()
 
