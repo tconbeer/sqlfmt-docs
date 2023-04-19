@@ -4,17 +4,36 @@ You can (and should!) use SQLFluff to lint your SQL queries after they are forma
 
 ```ini title=.sqlfluff
 [sqlfluff]
+exclude_rules = layout.indent, layout.cte_bracket, layout.select_targets
+# set max_line_length to whatever you set in sqlfmt
+max_line_length = 88
+
+[sqlfluff:rules]
+capitalisation_policy = lower
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:convention.terminator]
+multiline_newline = True
+```
+
+Earlier versions of sqlfluff (before v2.0) used a different
+configuration format:
+
+```ini title=.sqlfluff
+[sqlfluff]
 exclude_rules = L003, L018, L036
 
 [sqlfluff:rules]
-max_line_length = 88  # or whatever you set in sqlfmt
+# set max_line_length to whatever you set in sqlfmt
+max_line_length = 88
 capitalisation_policy = lower
 extended_capitalisation_policy = lower
 
 [sqlfluff:indentation]
 indented_joins = False
 indented_using_on = True
-template_blocks_indent = False
+# if using sqlfluff with sqlfmt < v0.18.0
+# template_blocks_indent = False
 
 [sqlfluff:rules:L052]
 multiline_newline = True
