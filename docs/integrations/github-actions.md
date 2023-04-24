@@ -59,8 +59,6 @@ jobs:
     steps:
       - name: Check out Repo
         uses: actions/checkout@v3
-        with:
-          persist-credentials: false
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
