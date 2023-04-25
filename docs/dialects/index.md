@@ -14,7 +14,7 @@ Using the polyglot dialect requires no configuration. The following dialects are
 - SparkSQL
 - DuckDB
 
-Many other dialects will also work just fine, especially if they adhere closely to standard/ANSI SQL. If you dialect isn't formatting properly, please [open an issue](https://github.com/tconbeer/sqlfmt/issues/new/choose).
+Many other dialects will also work just fine, especially if they adhere closely to standard/ANSI SQL. If your dialect isn't formatting properly, please [open an issue](https://github.com/tconbeer/sqlfmt/issues/new/choose).
 
 ## ClickHouse
 

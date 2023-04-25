@@ -55,7 +55,7 @@ to represent a newline (or line break). Unix platforms use `\n`, Windows uses
 `\r\n`, and Mac Classic (prior to OS X) used just `\r`.
 
 sqlfmt reads in your file in "universal newline" mode, which translates every
-newline to `\n`. It then writes your file using your host machine's default
+newline to `\n` while in memory. It then writes your file using your host machine's default
 line ending. This means that sqlfmt won't write a formatted file just to change its
 line endings, and a file won't fail in `--check` mode if it uses different
 line endings from what the host machine would use. This also plays better with

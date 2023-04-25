@@ -10,7 +10,7 @@ sqlfmt must be available on the PATH in order to be accessed by dbt Power User. 
 
 After installing sqlfmt and the dbt Power User extension:
 
-1. Associate your .sql files with the jinja-sql language. Select Preferences > Settings, and under Files: Associations click Add Item:
+1. Associate your `.sql` files with the `jinja-sql` language. Select Preferences > Settings, and under Files: Associations click Add Item:
     ![Screenshot of VS Code Settings menu, with Add Items button highlighted](./assets/dbt-power-user-jinja-sql-language.png)
 
     Alternatively, add the following to your VS Code `settings.json`:

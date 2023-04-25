@@ -91,7 +91,7 @@ def run(
 
     If a callback is provided, will execute the callback after each file is formatted.
 
-    Returns a Report that can be queried or printed.
+    Returns a Report that can be queried or printed with the display_report() method.
     """
 ```
 
@@ -124,7 +124,8 @@ def get_matching_paths(paths: Iterable[Path], mode: Mode) -> Set[Path]:
     """
     Takes an Iterable of Paths (files or directories) and a Mode as an input, and
     returns a Set of unique paths to individual files that match the input paths 
-    (or are contained in its directories) and are not excluded by the mode's exclude glob
+    (or are contained in its directories) and are not excluded by the mode's exclude
+    glob.
     """
 ```
 
@@ -149,9 +150,10 @@ report.display_report()
 
 ## `api.initialize_progress_bar`
 
-The CLI uses `tqdm` to show a progess bar for long runs. Since by default `api.run`
-uses multiple processes, we update the progress bar using a callback supplied
-to `api.run`. This function is a convenience function to initialize the progress bar.
+The CLI uses [tqdm](https://github.com/tqdm/tqdm) to show a progess bar for long
+runs. Since by default `api.run` uses multiple processes, we update the progress bar
+using a callback supplied to `api.run`. This function is a convenience function to
+initialize the progress bar.
 
 ```py
 def initialize_progress_bar(
