@@ -40,7 +40,7 @@ The simplest way to run sqlfmt in CI is to run it in `--check` or `--diff` mode 
 
 If you are migrating an existing project onto sqlfmt and do not wish to format every file in your project, you can instead run a check against only files that have changed in the PR.
 
-There are many ways to do this. One way is to use another Action to generate this list for you. We can recommend the [changed-files](https://github.com/marketplace/actions/changed-files) action.
+There are many ways to do this. One way is to use another Action to generate a list of changed files for you. We can recommend the [changed-files](https://github.com/marketplace/actions/changed-files) action.
 
 You must add this Action as a step before sqlfmt runs, and then use the output of this Action in your call to sqlfmt. Note that sqlfmt only operates on `.sql` and `.sql.jinja` files, so you do not need to filter the list of changed files that you pass to sqlfmt (it will not read or operate on files with other extensions).
 
@@ -59,8 +59,6 @@ jobs:
     steps:
       - name: Check out Repo
         uses: actions/checkout@v3
-        with:
-          persist-credentials: false
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:

@@ -41,7 +41,7 @@ docker run -v $(pwd):/src ghcr.io/tconbeer/sqlfmt:latest sqlfmt .
 ```
 
 :::tip
-The `jinjafmt` extra is installed in the container. You can configure sqlfmt to disable jinja formatting.
+The jinjafmt extra is installed in the container. You can configure sqlfmt to disable Jinja formatting.
 :::
 
 ## Running Other sqlfmt Commands
@@ -66,7 +66,7 @@ Read more about configuring sqlfmt [here](./configuring-sqlfmt).
 
 ### Using CLI Options
 
-You can simply include any CLI option by passing a command into the container. For example, to run sqlfmt without formatting jinja:
+You can simply include any CLI option by passing a command into the container. For example, to run sqlfmt without formatting Jinja:
 
 ```bash
 docker run -v $(pwd):/src ghcr.io/tconbeer/sqlfmt:latest sqlfmt . --no-jinjafmt

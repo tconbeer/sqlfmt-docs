@@ -84,12 +84,12 @@ const config = {
                 to: '/getting-started/installation',
               },
               {
-                label: 'Configuration',
-                to: '/getting-started/configuring-sqlfmt',
+                label: 'Commands',
+                to: '/getting-started/using-sqlfmt',
               },
               {
-                label: 'dbt',
-                to: '/integrations/dbt',
+                label: 'Configuration',
+                to: '/getting-started/configuring-sqlfmt',
               },
               {
                 label: 'Style Guide',

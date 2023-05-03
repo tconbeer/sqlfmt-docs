@@ -12,7 +12,7 @@ export default function FooterLinkItem({item}) {
   // footer links.
 
   // TC: code inside the first conditional block is the original code
-  if (isInternalUrl(href)) {
+  if (to || isInternalUrl(href)) {
     return (
       <Link
         className="footer__link-item"
