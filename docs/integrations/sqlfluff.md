@@ -4,7 +4,7 @@ You can (and should!) use SQLFluff to lint your SQL queries after they are forma
 
 ```ini title=.sqlfluff
 [sqlfluff]
-exclude_rules = layout.indent, layout.cte_bracket, layout.select_targets, layout.spacing
+exclude_rules = layout.indent, layout.cte_bracket, layout.cte_newline, layout.select_targets, layout.spacing
 # set max_line_length to whatever you set in sqlfmt
 max_line_length = 88
 
