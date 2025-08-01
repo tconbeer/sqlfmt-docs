@@ -67,7 +67,7 @@ jobs:
         run: pip install shandy-sqlfmt[jinjafmt]
       - name: Get Changed Files
         id: changed-files
-        uses: tj-actions/changed-files@v34
+        uses: tj-actions/changed-files@v46
       - name: Run sqlfmt
         run: sqlfmt --diff ${{ steps.changed-files.outputs.all_changed_files }}
 ```
@@ -121,7 +121,7 @@ jobs:
         run: pip install shandy-sqlfmt[jinjafmt]
       - name: Get Changed Files
         id: changed-files
-        uses: tj-actions/changed-files@v34
+        uses: tj-actions/changed-files@v46
       - name: Run sqlfmt
         run: sqlfmt ${{ steps.changed-files.outputs.all_changed_files }}
       - name: Commit sqlfmt changes
