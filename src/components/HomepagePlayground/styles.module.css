@@ -37,16 +37,39 @@
 }
 
 .controls {
+  margin: 1rem 0;
+}
 
+.actions {
+  display: flex;
+  gap: 1rem;
   margin: 1rem 0;
 
   & button {
-    margin: 1rem 0;
     font-weight: normal;
     width: 120px;
   }
-
+  
 }
+
+.copyButton {
+  width: auto;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+}
+.copyButton:active > .copyIcon {
+  rotate: 360deg;
+}
+
+.copyIcon {
+  height: 18px;
+  width: 18px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
 
 .controlLabel {
   width: 6em;
