@@ -155,7 +155,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Ted Conbeer`,
+        copyright: `Copyright © ${new Date().getFullYear()} Ted Conbeer. Icons by <a href="https://icons8.com" target="_blank">Icons8</a>`,
       },
       prism: {
         theme: prismThemes.github,

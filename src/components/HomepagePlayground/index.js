@@ -71,6 +71,10 @@ function Editor() {
   const [lineLength, setLineLength] = useState(88)
   const [fmtJinja, setFmtJinja] = useState(true)
 
+  const clipboard = "/img/icons8-clipboard-48.png"
+  const check = "/img/icons8-check-50.png"
+  const [copyIcon, setCopyIcon] = useState(clipboard)
+
   const exampleQuery = `
   {%- set stage_names = dbt_utils.get_column_values(ref('prep_stages_to_include_spo'), 'stage_name', default=[]) -%}
 
@@ -185,6 +189,15 @@ FROM joined
     setRunning(false)
   }
 
+  function copy() {
+    setCopyIcon(check);
+    setTimeout(() => {
+      setCopyIcon(clipboard);
+    }, 1000);
+    navigator.clipboard.writeText(code)
+    toast.info("Editor contents copied to clipboard.")
+  }
+
   return (
     <>
       <CodeMirror 
@@ -237,13 +250,27 @@ FROM joined
             onChange={(event) => setFmtJinja(event.target.checked)}
             />
         </div>
-        <button 
+        <div className={styles.actions}>
+        <button
+          id="fmt"
           className='button button--primary' 
           onClick={format} 
           disabled={isLoading || isRunning}
           >
           { isLoading ? 'Loading...' : isRunning ? 'Formatting...' : 'sqlfmt!' }
         </button>
+        <button 
+          style={{width: "auto"}}
+          className={`${styles.copyButton} button button--primary`}
+          onClick={copy} 
+          >
+          <img
+            className={styles.copyIcon}
+            src={copyIcon}
+            alt="clipboard icon"
+          />
+        </button>
+        </div>
         < ToastContainer 
           position='bottom-right'
           autoClose={2000}
