@@ -6,7 +6,7 @@ sidebar_position: 1
 :::danger Before You Begin
 **sqlfmt may not always produce the formatted output you want.** It might even break your SQL syntax. It is **highly recommended** to only run sqlfmt on files in a version control system (like git), so that it is easy for you to revert any changes made by sqlfmt. On your first run, be sure to make a commit before running sqlfmt.
 
-For more on sqlfmt's maturity see [Versioning and Stability](../versioning).
+For more on sqlfmt's maturity see [Maturity and Stability](../versioning).
 :::
 
 

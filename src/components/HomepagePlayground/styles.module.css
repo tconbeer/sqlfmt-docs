@@ -22,8 +22,8 @@
     background: none;
     border: none;
     padding: 0;
-    margin: 0 0 0.5rem 0;
     font: inherit; /* Inherit font styles from parent */
+    font-size: small;
     color: var(--ifm-color-primary); /* Or your desired link color */
     text-decoration: underline; /* Add underline like a link */
     text-decoration-color: var(--ifm-color-primary-lightest);

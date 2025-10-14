@@ -1,23 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-import clsx from 'clsx';
 import styles from './styles.module.css';
 import Heading from '@theme/Heading';
-import Head from '@docusaurus/Head';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 import CodeMirror from '@uiw/react-codemirror';
-import { StreamLanguage } from '@codemirror/language';
 import { sql } from '@codemirror/lang-sql';
 import { aura } from '@uiw/codemirror-theme-aura';
 import { noctisLilac } from '@uiw/codemirror-theme-noctis-lilac';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 
 function useTheme() {
-  const htmlElement = document.querySelector('html')
-  const initialTheme = htmlElement.dataset.theme;
-  const [theme, setTheme] = useState(initialTheme)
+  const [theme, setTheme] = useState("dark")
   const observerConfig = { attributes: true, childList: false, subtree: false}
 
   useEffect( () => {
+    const htmlElement = document.querySelector('html')
+    setTheme(htmlElement.dataset.theme);
     const callback = (mutationList, observer) => {
       for (const mutation of mutationList) {
         if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
@@ -268,5 +266,5 @@ export default function HomepagePlayground() {
         <Editor />
       </div>
     </section>
-  );
+  )
 }

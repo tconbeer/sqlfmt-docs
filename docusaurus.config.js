@@ -104,19 +104,19 @@ const config = {
             items: [
               {
                 label: 'Installation',
-                to: '/getting-started/installation',
+                to: '/docs/getting-started/installation',
               },
               {
                 label: 'Commands',
-                to: '/getting-started/using-sqlfmt',
+                to: '/docs/getting-started/using-sqlfmt',
               },
               {
                 label: 'Configuration',
-                to: '/getting-started/configuring-sqlfmt',
+                to: '/docs/getting-started/configuring-sqlfmt',
               },
               {
                 label: 'Style Guide',
-                to: '/style',
+                to: '/docs/style',
               },
             ],
           },
