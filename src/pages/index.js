@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomepagePlayground from '@site/src/components/HomepagePlayground';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -18,9 +19,9 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            className="button button--primary button--lg"
+            to="/docs">
+            Get Started
           </Link>
         </div>
       </div>
@@ -32,11 +33,12 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="sqlfmt formats your dbt SQL files so you don't have to. It is similar in nature to black, gofmt, and rustfmt.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <HomepagePlayground />
+
       </main>
     </Layout>
   );

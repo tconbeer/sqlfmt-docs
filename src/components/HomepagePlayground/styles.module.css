@@ -1,0 +1,68 @@
+.playground {
+  display: block;
+  margin: 2rem 0;
+  width: 100%;
+
+  & h2 {
+    color: var(--ifm-color-primary);
+  }
+
+  & p {
+    margin-bottom: 0.5rem;
+  }
+  
+}
+
+.exampleButtons {
+  display: flex;
+  gap: 1rem;
+
+  & button {
+    /* Remove default button styles */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+    font: inherit; /* Inherit font styles from parent */
+    color: var(--ifm-color-primary); /* Or your desired link color */
+    text-decoration: underline; /* Add underline like a link */
+    text-decoration-color: var(--ifm-color-primary-lightest);
+    cursor: pointer; /* Indicate it's clickable */
+    text-align: left; /* Align text to the left, like a link */
+    -webkit-appearance: none; /* Remove browser-specific button styling */
+    -moz-appearance: none;
+    appearance: none;
+
+  }
+}
+
+.controls {
+
+  margin: 1rem 0;
+
+  & button {
+    margin: 1rem 0;
+    font-weight: normal;
+    width: 120px;
+  }
+
+}
+
+.controlLabel {
+  width: 6em;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  font-size: small;
+  height: 20px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  font-size: small;
+  height: 20px;
+
+}

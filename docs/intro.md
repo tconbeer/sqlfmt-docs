@@ -1,47 +1,20 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+slug: /
 ---
 
-# Tutorial Intro
+# Introduction to sqlfmt
 
-Let's discover **Docusaurus in less than 5 minutes**.
+sqlfmt formats your dbt SQL files so you don't have to. It is similar in nature to *Black*, gofmt, and rustfmt (but for jinja-templated SQL).
 
-## Getting Started
+sqlfmt is a command-line tool that is built in Python and runs on MacOS, Linux, and Windows, so you can run it locally and in CI.
 
-Get started by **creating a new site**.
+sqlfmt is not configurable: it enforces a single style. You will never have to mention (or argue about) code style in code reviews again. sqlfmt maintains comments and some extra newlines, but largely ignores all indentation and line breaks in the input file.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+sqlfmt is not a linter. It does not parse your code into an AST; it just lexes it and tracks a small subset of tokens that impact formatting. This lets us "do one thing and do it well:" sqlfmt is very fast, easy to maintain, and easy to extend, compared to linters that need a full SQL grammar.
 
-### What you'll need
+sqlfmt is designed to work with template SQL files that contain Jinja tags and blocks. It formats the code that users look at, and therefore doesn't need to know anything about what happens after the templates are rendered.
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+:::info Limited DDL and DML
+For now, sqlfmt only works on `select`, `delete`, `grant`, `revoke`, and `create function` statements (which is all you need if you use sqlfmt with a dbt project). One day it may be extended to additional DDL and DML. See [this tracking issue](https://github.com/tconbeer/sqlfmt/issues/262) for more information.
+:::
