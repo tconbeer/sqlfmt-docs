@@ -9,6 +9,7 @@ import { StreamLanguage } from '@codemirror/language';
 import { sql } from '@codemirror/lang-sql';
 import { aura } from '@uiw/codemirror-theme-aura';
 import { noctisLilac } from '@uiw/codemirror-theme-noctis-lilac';
+import { Slide, ToastContainer, toast } from 'react-toastify';
 
 function useTheme() {
   const htmlElement = document.querySelector('html')
@@ -162,7 +163,7 @@ FROM joined
       pyodide.globals.code = code;
       pyodide.globals.line_length = lineLength;
       pyodide.globals.no_jinjafmt = !fmtJinja;
-      const formatted = await pyodide.runPythonAsync(`
+      pyodide.runPythonAsync(`
         from sqlfmt.api import Mode, format_string
         mode = Mode(
           line_length=int(line_length),
@@ -170,7 +171,18 @@ FROM joined
         )
         format_string(code, mode)
       `)
-      setCode(formatted)
+        .then((formatted) => {
+          if (code == formatted) {
+            toast.info("Code already formatted.")
+          } else {
+            setCode(formatted)
+            toast.success("Formatted!")
+          }
+        })
+        .catch((error) => {
+          toast.error("A syntax error prevented your\n query from being formatted.", {autoClose: 3000})
+        })
+      
     }
     setRunning(false)
   }
@@ -234,6 +246,13 @@ FROM joined
           >
           { isLoading ? 'Loading...' : isRunning ? 'Formatting...' : 'sqlfmt!' }
         </button>
+        < ToastContainer 
+          position='bottom-right'
+          autoClose={2000}
+          closeOnClick={true}
+          theme="colored"
+          transition={Slide}
+        />
       </div>
     </>
   );
@@ -245,7 +264,7 @@ export default function HomepagePlayground() {
     <section className={styles.playground}>
       <div className="container">
         <Heading as="h2">Try it here</Heading>
-        <p> Type or paste a <code>select</code> statement into the box below. Click the button to have it formatted.</p>
+        <p> Type or paste a <code>select</code> statement into the box below. Click the button to format it with sqlfmt.</p>
         <Editor />
       </div>
     </section>

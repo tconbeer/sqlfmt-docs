@@ -40,6 +40,10 @@
   }
 }
 
+.Toastify__close-button {
+  display: none;
+}
+
 .markdown {
   --ifm-link-decoration: underline;
 }
