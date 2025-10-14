@@ -1,36 +1,29 @@
-# sqlfmt-docs
+# Website
 
-This is the documentation for [sqlfmt](https://github.com/tconbeer/sqlfmt), the dbt SQL autoformatter. It is hosted at https://docs.sqlfmt.com. 
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-This website is built using [Docusaurus 2](https://docusaurus.io/).
+## Installation
 
-### Installation
-
-```
-$ yarn
+```bash
+npm install
 ```
 
-You may also need to install [Git LFS](https://git-lfs.github.com/), which we use to track static assets in the repo.
+## Local Development
 
-
-### Local Development
-
-```
-$ yarn start
+```bash
+npm start
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-### Build
+## Build
 
-```
-$ yarn build
+```bash
+npm build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+## Deployment
 
-```
-$ yarn deploy
-```
+Uses docker and GitHub Actions. Just push a commit to `main`.

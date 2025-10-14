@@ -20,7 +20,7 @@ There are several reasons that sqlfmt insists on lowercase SQL keywords:
 ## Why trailing commas?
 1. Using trailing commas follows the convention of every other written language and programming language.
 1. Leading commas require placing the first field name on the same line as `select`, which can obscure that field (especially with `select distinct top 25 ...`).
-1. SQL query compilation is extremely fast; the "cost" of "last field" errors is very low. Some dialects (e.g., BigQuery, DuckDB) even allow a trailing comma in the final field of a select statement.
+1. SQL query compilation is extremely fast; the "cost" of "last field" errors is very low. A growing number of dialects (e.g., Snowflake, BigQuery, DuckDB) even allow a trailing comma in the final field of a select statement.
 1. Trailing commas generalize better within `select` statements (e.g. `group by` and `partition by` clauses) and in other kinds of SQL statements (e.g. `insert` statements).
 
 ## Examples

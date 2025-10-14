@@ -1,5 +1,27 @@
-# Versioning and Stability
+# Maturity and Stability
 
+sqlfmt was first released in 2021; since then, it has been [downloaded millions of times](https://pepy.tech/projects/shandy-sqlfmt?versions=*), integrated into [dbt Cloud](../integrations/dbt-cloud), and trusted by thousands of teams.
+
+But it's also maintained by a [single person](https://tedconbeer.com) and is version-zero software.
+
+So... can you use it? That may depend on your use-case.
+
+## Project Maturity for Different Use Cases
+
+There are certain situations where sqlfmt can be considered feature-complete and stable. Those are:
+
+1. Using sqlfmt to format a dbt project (which may also include jinja and some minimal DDL/DML, like grants, create function, etc.) for one of the major, standards-conforming, OLAP dialects (Snowflake, BigQuery, Redshift, DuckDB, Postgres, MySQL).
+
+1. Using sqlfmt to format **only select statements** for one of those same dialects.
+
+However, there are other use cases where sqlfmt is incomplete or less well-supported, and where you should use more caution:
+
+1. Formatting some dialects that deviate from ANSI or Postgres, like T-SQL (SQLServer).
+
+1. Formatting other DDL (create table, insert, etc.). For these statements, sqlfmt attempts to no-op on anything it cannot parse, but this doesn't always work. For more details on supported DDL, see [this tracking issue](https://github.com/tconbeer/sqlfmt/issues/262).
+
+
+## Stability
 sqlfmt is being actively developed, and as version 0 software, anything about the sqlfmt style, operations, or interface may change in the future.
 
 That said, this project conforms to [semantic versioning](https://semver.org/). *Patch* releases will only fix bugs or add backwards-compatible features, and will not change the Python API or the formatting of files, except under two scenarios:

@@ -19,7 +19,7 @@ Consider also [tracking the Trunk launcher in your repo](https://docs.trunk.io/d
 
 You can install the VSCode extension [here](https://marketplace.visualstudio.com/items?itemName=Trunk.io), which will not only flag formatting issues for you
 
-![Screenshot of Trunk showing a sqlfmt issue in VSCode](/img/trunk-vscode.png)
+![Screenshot of Trunk showing a sqlfmt issue in VSCode](./assets/trunk-vscode.png)
 
 but also allow you to use Trunk to format-on-save SQL files with sqlfmt:
 
@@ -34,7 +34,7 @@ but also allow you to use Trunk to format-on-save SQL files with sqlfmt:
 
 Trunk provides a [GitHub Action](https://github.com/trunk-io/trunk-action) that will highlight lint and formatting issues for you, including `sqlfmt` issues.
 
-![Screenshot of Trunk showing a sqlfmt issue in GitHub](/img/trunk-github-action.png)
+![Screenshot of Trunk showing a sqlfmt issue in GitHub](./assets/trunk-github-action.png)
 
 Here's an example workflow that you can use:
 

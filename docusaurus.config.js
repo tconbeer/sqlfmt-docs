@@ -1,27 +1,33 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+// `@type` JSDoc annotations allow editor autocompletion and type checking
+// (when paired with `@ts-check`).
+// There are various equivalent ways to declare your Docusaurus config.
+// See: https://docusaurus.io/docs/api/docusaurus-config
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+import {themes as prismThemes} from 'prism-react-renderer';
+
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'sqlfmt',
   tagline: "sqlfmt formats your dbt SQL files so you don't have to.",
-  url: 'https://docs.sqlfmt.com',
-  baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {hooks: {onBrokenMarkdownLinks: 'throw'}},
   favicon: 'img/favicon.ico',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'tconbeer', // Usually your GitHub org/user name.
-  projectName: 'sqlfmt-docs', // Usually your repo name.
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  // Set the production url of your site here
+  url: 'https://sqlfmt.com',
+  baseUrl: '/',
+
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -35,14 +41,26 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.js',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/tconbeer/sqlfmt-docs/tree/main/',
         },
         blog: false,
+        // {
+        //   showReadingTime: true,
+        //   feedOptions: {
+        //     type: ['rss', 'atom'],
+        //     xslt: true,
+        //   },
+        //   // Please change this to your repo.
+        //   onInlineTags: 'warn',
+        //   onInlineAuthors: 'warn',
+        //   onUntruncatedBlogPosts: 'warn',
+        // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
       }),
     ],
@@ -51,11 +69,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // Replace with your project's social card
+      image: 'img/logo.png',
+      colorMode: {
+        respectPrefersColorScheme: true,
+      },
       navbar: {
         title: 'sqlfmt',
         logo: {
-          href: "https://sqlfmt.com",
-          target: "_self",
+          href: "/",
           alt: 'sqlfmt Logo',
           src: 'img/logo.png',
         },
@@ -68,8 +90,9 @@ const config = {
           },
           {
             href: 'https://github.com/tconbeer/sqlfmt',
-            label: 'GitHub',
             position: 'right',
+            className: "header--github-link",
+            "aria-label": "GitHub repository link",
           },
         ],
       },
@@ -81,19 +104,19 @@ const config = {
             items: [
               {
                 label: 'Installation',
-                to: '/getting-started/installation',
+                to: '/docs/getting-started/installation',
               },
               {
                 label: 'Commands',
-                to: '/getting-started/using-sqlfmt',
+                to: '/docs/getting-started/using-sqlfmt',
               },
               {
                 label: 'Configuration',
-                to: '/getting-started/configuring-sqlfmt',
+                to: '/docs/getting-started/configuring-sqlfmt',
               },
               {
                 label: 'Style Guide',
-                to: '/style',
+                to: '/docs/style',
               },
             ],
           },
@@ -135,8 +158,8 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Ted Conbeer`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
       },
       posthog: {
         apiKey: "phc_JvcbkJ52TJpVaMxGHRGOxYrcOuTKU05949sLeVp8r7g",
@@ -145,4 +168,4 @@ const config = {
     }),
 };
 
-module.exports = config;
+export default config;

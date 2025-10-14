@@ -1,7 +1,7 @@
 # API Reference
 
 sqlfmt can be imported as a Python library and defines a
-[mostly-stable](/versioning/) public API.
+[mostly-stable](../versioning/index.md) public API.
 
 The public API is defined in the `sqlfmt.api` module. Any breaking changes to the public API will be limited to new minor versions (`0.x.0`) and documented in the [CHANGELOG](https://github.com/tconbeer/sqlfmt/tree/main/CHANGELOG.md).
 

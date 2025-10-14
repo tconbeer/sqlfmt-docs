@@ -7,7 +7,7 @@ Add the following config to your `.pre-commit-config.yaml` file:
 ```yml title=.pre-commit-config.yaml
 repos:
   - repo: https://github.com/tconbeer/sqlfmt
-    rev: v0.18.0
+    rev: v0.27.0
     hooks:
       - id: sqlfmt
         language_version: python
@@ -18,7 +18,7 @@ To run sqlfmt with the recommended jinjafmt extra, you need to specify the extra
 ```yml title=.pre-commit-config.yaml
 repos:
   - repo: https://github.com/tconbeer/sqlfmt
-    rev: v0.18.0
+    rev: v0.27.0
     hooks:
       - id: sqlfmt
         language_version: python

@@ -78,20 +78,6 @@ If you have many team members who are using the [dbt Cloud IDE](./dbt-cloud.md),
 
 :::warning
 **sqlfmt will not always produce the formatted output you might want.** It might even break your SQL syntax. It is **highly recommended** to carefully review the commits made by sqlfmt before merging to main. If you have automated tests, they should run **after** sqlfmt to ensure sqlfmt does not introduce regressions.
-
-There are certain situations where sqlfmt can be considered to be in Beta, or even more mature than that. Those are:
-
-1. Using sqlfmt to format select statements for one of the major dialects (PostgresSQL, MySQL, Snowflake, BQ, Redshift).
-
-1. Using sqlfmt to format a dbt project (which may also include jinja and some minimal DDL/DML, like grants, create function, etc.) for one of the major dialects.
-
-However, there are other use cases where sqlfmt is very much alpha:
-
-1. Formatting some dialects that deviate from ANSI or Postgres, like T-SQL (SQLServer).
-
-1. Formatting other DDL (create table, insert, etc.) (sqlfmt attempts to be no-op on these statements as much as possible).
-
-In these domains sqlfmt is nowhere near "feature complete" and caution is highly advised.
 :::
 
 Committing changes from an Action adds some complexity, including authorizing the Actions user to write to your repo. We recommend using the [git-auto-commit](https://github.com/marketplace/actions/git-auto-commit) Action for this.

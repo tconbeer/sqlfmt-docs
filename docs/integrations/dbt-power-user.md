@@ -5,7 +5,7 @@
 The Extension has many features, including a sqlfmt-powered formatter.
 
 :::tip
-sqlfmt must be available on the PATH in order to be accessed by dbt Power User. Install sqlfmt with `pipx` to isolate its dependencies and add it to the PATH.
+sqlfmt must be available on the PATH in order to be accessed by dbt Power User. Install sqlfmt as a tool with `uv` to isolate its dependencies and add it to the PATH.
 :::
 
 After installing sqlfmt and the dbt Power User extension:
