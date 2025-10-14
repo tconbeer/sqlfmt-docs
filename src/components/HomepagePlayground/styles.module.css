@@ -70,6 +70,9 @@
   transition-duration: 200ms;
 }
 
+html[data-theme='light'] .copyIcon {
+  filter: invert(1)
+}
 
 .controlLabel {
   width: 6em;
