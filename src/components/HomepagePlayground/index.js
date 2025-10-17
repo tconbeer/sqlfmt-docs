@@ -44,8 +44,7 @@ function usePyodide() {
           const pyodide = await window.loadPyodide()
           await pyodide.loadPackage("micropip");
           const micropip = pyodide.pyimport("micropip");
-          await micropip.install('black');
-          await micropip.install('shandy-sqlfmt');
+          await micropip.install('shandy-sqlfmt[jinjafmt]');
 
           pyodideRef.current = pyodide
         }

@@ -13,8 +13,9 @@ Want to test out sqlfmt on a query before you install it? [On the homepage](/) i
 
 ## Recommended Installation: Use uv
 
-sqlfmt is a command-line tool that is built in Python and runs on MacOS, Linux, and Windows. 
-There are many ways to install and run it, but we strongly recommend using [uv](https://docs.astral.sh/uv):
+sqlfmt is a command-line tool that is built in Python and runs on MacOS, Linux, and Windows. It is distributed
+on PyPI under the name `shandy-sqlfmt`. There are many ways to install and run it, but we strongly 
+recommend using [uv](https://docs.astral.sh/uv):
 
 1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer). From a POSIX shell, run:
 
