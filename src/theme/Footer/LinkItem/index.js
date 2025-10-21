@@ -31,7 +31,7 @@ export default function FooterLinkItem({item}) {
   } else {
     return(
       <a
-        class="footer__link-item"
+        className="footer__link-item"
         href={prependBaseUrlToHref ? normalizedHref : href}
         {...props}
       >
