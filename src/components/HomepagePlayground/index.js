@@ -60,6 +60,21 @@ function usePyodide() {
   return [pyodideRef.current, isLoading]
 }
 
+
+function debounce(callback, delay = 300) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      callback.apply(this, args);
+    }, delay);
+  };
+}
+
+const capture_user_typed = debounce(() => {
+  posthog.capture('user_typed_query')}, 1000
+)
+
 function Editor() {
   const [isRunning, setRunning] = useState(false)
   const [pyodide, isLoading] = usePyodide()
@@ -197,6 +212,11 @@ FROM joined
     toast.info("Editor contents copied to clipboard.")
   }
 
+  function handleChange(value) {
+    setCode(value)
+    capture_user_typed()
+  }
+
   return (
     <>
       <CodeMirror 
@@ -204,7 +224,7 @@ FROM joined
         height="400px"
         theme={editorTheme}
         extensions={extensions}
-        onChange={(value) => setCode(value)}
+        onChange={handleChange}
       />
       <div className={styles.exampleButtons}>
         <button 
@@ -219,7 +239,7 @@ FROM joined
       <div className={styles.controls}>
         <div className={styles.slider}>
           <label
-            for="lineLengthSlider"
+            htmlFor="lineLengthSlider"
             className={styles.controlLabel}
             >
             Line Length:
@@ -237,7 +257,7 @@ FROM joined
         </div>
         <div className={styles.checkbox}>
           <label
-            for="jinjaCheckbox"
+            htmlFor="jinjaCheckbox"
             className={styles.controlLabel}
             >
             Format Jinja:
@@ -249,6 +269,7 @@ FROM joined
             onChange={(event) => setFmtJinja(event.target.checked)}
             />
         </div>
+        <p className={styles.security}>🔒 sqlfmt runs in your browser. Your query never leaves your device.</p>
         <div className={styles.actions}>
         <button
           id="fmt"
@@ -259,6 +280,7 @@ FROM joined
           { isLoading ? 'Loading...' : isRunning ? 'Formatting...' : 'sqlfmt!' }
         </button>
         <button 
+          id="copyButton"
           style={{width: "auto"}}
           className={`${styles.copyButton} button button--primary`}
           onClick={copy} 

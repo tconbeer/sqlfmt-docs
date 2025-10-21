@@ -91,6 +91,7 @@ const config = {
           {
             href: 'https://github.com/tconbeer/sqlfmt',
             position: 'right',
+            // label: "GitHub",
             className: "header--github-link",
             "aria-label": "GitHub repository link",
           },
@@ -155,7 +156,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Ted Conbeer. Icons by <a href="https://icons8.com" target="_blank">Icons8</a>`,
+        copyright: `Copyright © ${new Date().getFullYear()} Ted Conbeer. <a href="/docs/privacy">Privacy Policy</a>. Icons by <a href="https://icons8.com" target="_blank">Icons8</a>`,
       },
       prism: {
         theme: prismThemes.github,
