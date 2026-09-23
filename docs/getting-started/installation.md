@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Installation
 
-:::info Try It First
+:::info[Try It First]
 Want to test out sqlfmt on a query before you install it? [On the homepage](/) is an interactive playground with the latest sqlfmt version.
 :::
 
@@ -49,7 +49,7 @@ recommend using [uv](https://docs.astral.sh/uv):
 
     You should see some ASCII art and help text.
 
-:::warning PyPI Names
+:::warning[PyPI Names]
 The PyPI distribtuion is `shandy-sqlfmt`, NOT `sqlfmt`, which is a different (unrelated but not malicious) package.
 This is unfortunate, but the author cannot do anything about it.
 :::
