@@ -18,14 +18,7 @@ const config = {
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    // Improve compatibility with the upcoming Docusaurus v4. These are the
-    // flags that `v4: true` enabled before Docusaurus 3.10; since 3.10, `true`
-    // also enables Rspack (requires @docusaurus/faster), storage namespacing,
-    // and disables MDX1 compat, which we haven't opted into yet.
-    v4: {
-      removeLegacyPostBuildHeadAttribute: true,
-      useCssCascadeLayers: true,
-    },
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
   // Set the production url of your site here
@@ -40,7 +33,15 @@ const config = {
     locales: ['en'],
   },
 
-  plugins: ["posthog-docusaurus"],
+  plugins: [
+    [
+      "posthog-docusaurus",
+      {
+        apiKey: "phc_JvcbkJ52TJpVaMxGHRGOxYrcOuTKU05949sLeVp8r7g",
+        enableInDevelopment: true,
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -169,10 +170,6 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
-      posthog: {
-        apiKey: "phc_JvcbkJ52TJpVaMxGHRGOxYrcOuTKU05949sLeVp8r7g",
-        enableInDevelopment: true
-      }
     }),
 };
 

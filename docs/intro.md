@@ -14,6 +14,6 @@ sqlfmt is not a linter. It does not parse your code into an AST; it just lexes i
 
 sqlfmt is designed to work with template SQL files that contain Jinja tags and blocks. It formats the code that users look at, and therefore doesn't need to know anything about what happens after the templates are rendered.
 
-:::info Limited DDL and DML
+:::info[Limited DDL and DML]
 For now, sqlfmt only works on `select`, `delete`, `grant`, `revoke`, and `create function` statements (which is all you need if you use sqlfmt with a dbt project). One day it may be extended to additional DDL and DML. See [this tracking issue](https://github.com/tconbeer/sqlfmt/issues/262) for more information.
 :::
