@@ -18,7 +18,14 @@ const config = {
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    // Improve compatibility with the upcoming Docusaurus v4. These are the
+    // flags that `v4: true` enabled before Docusaurus 3.10; since 3.10, `true`
+    // also enables Rspack (requires @docusaurus/faster), storage namespacing,
+    // and disables MDX1 compat, which we haven't opted into yet.
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+      useCssCascadeLayers: true,
+    },
   },
 
   // Set the production url of your site here
