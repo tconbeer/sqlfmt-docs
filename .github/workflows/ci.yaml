@@ -60,18 +60,53 @@ jobs:
           push: false
           tags: sqlfmt-docs:ci
 
-      - name: Run image and check key routes
+      - name: Run image
         run: |
-          docker run -d --name sqlfmt-docs -p 3000:3000 sqlfmt-docs:ci
+          # Compose publishes 3000; Traefik routes to 80, the lowest exposed port.
+          docker run -d --name sqlfmt-docs -p 3000:3000 -p 8080:80 sqlfmt-docs:ci
           for attempt in $(seq 1 30); do
             curl -fsS -o /dev/null http://127.0.0.1:3000/ && break
             sleep 1
           done
-          for path in / /docs/intro /docs/getting-started/installation /sitemap.xml /img/favicon.ico; do
-            curl -fsS -o /dev/null -w "%{http_code} $path\n" "http://127.0.0.1:3000$path"
+
+      - name: Check routes and headers
+        run: |
+          base=http://127.0.0.1:3000
+          for path in / /docs/intro /docs/intro/ /docs/api /docs/api/ /docs/getting-started/installation /sitemap.xml /img/favicon.ico; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$base$path")
+            echo "$code $path"
+            test "$code" = 200
           done
-          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3000/this-page-does-not-exist)" = 404
-          curl -fsS http://127.0.0.1:3000/ | grep -q "sqlfmt formats your dbt SQL files"
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/docs/intro)" = 200
+          test "$(curl -s -o /dev/null -w '%{http_code}' "$base/this-page-does-not-exist")" = 404
+          curl -fsS "$base/" | grep -q "sqlfmt formats your dbt SQL files"
+          asset=$(curl -fsS "$base/" | grep -o '/assets/js/main\.[0-9a-f]*\.js' | head -1)
+          test -n "$asset"
+          curl -fsSI "$base$asset" | grep -qi '^cache-control: public, max-age=31536000, immutable'
+          curl -fsSI "$base/docs/intro" | grep -qi '^cache-control: no-cache'
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run smoke tests against the image
+        run: npm run test:e2e
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:3000
+
+      - name: Upload Playwright traces
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-docker-test-results
+          path: test-results/
+          retention-days: 7
 
       - name: Container logs
         if: always()
