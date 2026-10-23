@@ -10,6 +10,10 @@ const externalBaseURL = process.env.PLAYWRIGHT_BASE_URL;
 // Set PLAYWRIGHT_CHROMIUM_EXECUTABLE to use a preinstalled Chromium build.
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || undefined;
 
+// Set PLAYWRIGHT_CHANNEL (e.g. `chrome`) to use an installed browser channel;
+// CI uses the runner's preinstalled Chrome.
+const channel = process.env.PLAYWRIGHT_CHANNEL || undefined;
+
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
@@ -22,7 +26,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
     launchOptions: {executablePath},
   },
-  projects: [{name: 'chromium', use: {...devices['Desktop Chrome']}}],
+  projects: [{name: 'chromium', use: {...devices['Desktop Chrome'], channel}}],
   // Serves the production build; run `npm run build` first (or `npm test`).
   webServer: externalBaseURL
     ? undefined
