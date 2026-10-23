@@ -1,27 +1,21 @@
 # syntax=docker/dockerfile:1
 
-# Stage 1: Base image.
-## Start with a base image containing NodeJS so we can build Docusaurus.
-FROM node:lts AS base
-## Enable corepack.
-RUN corepack enable
-## Set the working directory to `/opt/docusaurus`.
+# Node.js Active LTS, pinned to an exact patched release (and digest) so a
+# rebuild can never pull an older, vulnerable Node. Renovate keeps it current.
+FROM node:24.22.1-trixie-slim@sha256:43b9ba1142b8dcf33fa8f922ca1be85714adc444e0586c7cf7726daaeabc1bea AS base
 WORKDIR /opt/docusaurus
 
-# Stage 2: Production build mode.
-FROM base AS prod
-## Set the working directory to `/opt/docusaurus`.
-WORKDIR /opt/docusaurus
-## Copy over the source code.
-COPY . /opt/docusaurus/
-## Install dependencies with `--immutable` to ensure reproducibility.
+# Build the static site, then drop dev-only dependencies.
+FROM base AS build
+COPY package.json package-lock.json ./
 RUN npm ci
-## Build the static site.
-RUN npm run build
+COPY . .
+RUN npm run build && npm prune --omit=dev
 
-# Stage 3: Serve with `docusaurus serve`.
-FROM prod AS serve
-## Expose the port that Docusaurus will run on.
+# Serve the build with `docusaurus serve`, as an unprivileged user.
+FROM base AS serve
+ENV NODE_ENV=production
+COPY --from=build /opt/docusaurus /opt/docusaurus
+USER node
 EXPOSE 3000
-## Run the production server.
-CMD ["npm", "run", "serve", "--", "--host", "0.0.0.0", "--no-open"]
+CMD ["node_modules/.bin/docusaurus", "serve", "--host", "0.0.0.0", "--port", "3000", "--no-open"]

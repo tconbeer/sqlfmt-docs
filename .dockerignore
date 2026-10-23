@@ -1,0 +1,11 @@
+.git
+.github
+node_modules
+build
+.docusaurus
+.cache-loader
+test-results
+playwright-report
+blob-report
+Dockerfile
+.dockerignore
