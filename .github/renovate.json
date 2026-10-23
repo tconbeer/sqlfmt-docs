@@ -1,0 +1,84 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard"
+  ],
+  "timezone": "America/New_York",
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "platformAutomerge": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["before 6am on the first day of the month"]
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security"],
+    "schedule": ["at any time"],
+    "prCreation": "immediate",
+    "minimumReleaseAge": null
+  },
+  "osvVulnerabilityAlerts": true,
+  "customManagers": [
+    {
+      "description": "Track the Pyodide release the playground loads from the jsDelivr CDN.",
+      "customType": "regex",
+      "managerFilePatterns": ["/^src/components/HomepagePlayground/index\\.js$/"],
+      "matchStrings": ["cdn\\.jsdelivr\\.net/pyodide/v(?<currentValue>[0-9.]+)/"],
+      "depNameTemplate": "pyodide",
+      "datasourceTemplate": "npm"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Wait three days before adopting new npm releases; vulnerability fixes are exempt.",
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "description": "Group non-major updates into a single PR and merge on green CI.",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-nonmajor",
+      "automerge": true
+    },
+    {
+      "description": "Majors get one PR each, but still merge themselves once CI is green.",
+      "matchUpdateTypes": ["major"],
+      "automerge": true
+    },
+    {
+      "description": "Keep the Node.js runtime (Docker image, .nvmrc) on even-numbered LTS lines only.",
+      "matchDepNames": ["node"],
+      "matchDatasources": ["docker", "node-version"],
+      "allowedVersions": "/^\\d*[02468](\\.|$)/"
+    },
+    {
+      "description": "New Node.js majors wait for approval on the Dependency Dashboard and are merged by hand.",
+      "matchDepNames": ["node"],
+      "matchDatasources": ["docker", "node-version"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true,
+      "automerge": false
+    },
+    {
+      "description": "The engines field states the supported Node.js lines and is maintained by hand.",
+      "matchDepTypes": ["engines"],
+      "enabled": false
+    },
+    {
+      "description": "CI stubs Pyodide, so check the playground in a real browser before merging.",
+      "matchDepNames": ["pyodide"],
+      "groupName": "pyodide",
+      "automerge": false
+    },
+    {
+      "description": "Major bumps to overrides can break dependents CI does not exercise, such as the dev server.",
+      "matchDepTypes": ["overrides"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
+  ]
+}
