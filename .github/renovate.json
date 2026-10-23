@@ -45,9 +45,9 @@
       "automerge": true
     },
     {
-      "description": "Majors get one PR each, but still merge themselves once CI is green.",
+      "description": "Majors get one PR each and are merged by hand, since merging deploys to production.",
       "matchUpdateTypes": ["major"],
-      "automerge": true
+      "automerge": false
     },
     {
       "description": "Keep the Node.js runtime (Docker image, .nvmrc) on even-numbered LTS lines only.",

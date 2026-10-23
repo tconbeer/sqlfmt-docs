@@ -18,4 +18,4 @@ ENV NODE_ENV=production
 COPY --from=build /opt/docusaurus /opt/docusaurus
 USER node
 EXPOSE 3000
-CMD ["node_modules/.bin/docusaurus", "serve", "--host", "0.0.0.0", "--port", "3000", "--no-open"]
+CMD ["npm", "run", "serve", "--", "--host", "0.0.0.0", "--port", "3000", "--no-open"]
