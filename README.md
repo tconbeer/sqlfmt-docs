@@ -34,8 +34,15 @@ Playwright smoke tests run against the production build (`docusaurus serve`):
 npx playwright install chromium  # once
 npm test                         # build, then run the smoke tests
 npm run test:e2e                 # run the smoke tests against an existing build
+PLAYWRIGHT_BASE_URL=http://127.0.0.1:3000 npm run test:e2e  # against a running site
 ```
 
 ## Deployment
 
 Uses docker and GitHub Actions. Just push a commit to `main`.
+
+The image builds the site with Node and serves `build/` with [Caddy](https://caddyserver.com/) on port 3000 (and 80, for Traefik); no Node runs in production. To try it locally:
+
+```bash
+docker build -t sqlfmt-docs . && docker run --rm -p 3000:3000 sqlfmt-docs
+```
